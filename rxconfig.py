@@ -2,18 +2,20 @@ import reflex as rx
 import os
 
 # Obtener la URL del backend desde variable de entorno
-# Si API_URL no está definida, usar la URL de Railway (producción)
-# Para desarrollo local, definir API_URL=http://localhost:8000
-backend_url = os.getenv(
+# Según la documentación de Reflex: https://reflex.dev/docs/hosting/self-hosting
+# Se puede usar API_URL en tiempo de exportación para sobrescribir el valor por defecto
+# Para desarrollo local, el valor por defecto es http://localhost:8000
+api_url = os.getenv(
     "API_URL",
     "https://alejoagasiweb.up.railway.app"  # URL de producción por defecto
 )
 
 config = rx.Config(
     app_name="python_web",
-    # URL del backend para que el frontend sepa dónde conectarse
-    # Esta configuración se usa cuando se ejecuta 'reflex export'
-    backend_url=backend_url,
+    # api_url: URL del backend accesible públicamente
+    # Según la documentación, esto es esencial para que el frontend interactúe con el backend
+    # Se puede sobrescribir con la variable de entorno API_URL en tiempo de exportación
+    api_url=api_url,
     # Lista de dominios que pueden interactuar con tu backend
     cors_allowed_origins=[
         "http://localhost:3000",
