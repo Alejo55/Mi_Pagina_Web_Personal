@@ -9,7 +9,7 @@ import datetime
 from python_web.styles.styles import Size
 
 
-def header() -> rx.Component:
+def header(details: bool = True) -> rx.Component:
     return rx.vstack(
         rx.hstack(
             rx.avatar(
@@ -33,13 +33,13 @@ def header() -> rx.Component:
                 ),
                 rx.hstack(
                     link_icon(
-                        "icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
+                        "/icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
                     ),
                     link_icon(
-                        "icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
+                        "/icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
                     ),
                     link_icon(
-                        "icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
+                        "/icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
                     ),
                     spacing="5",  # Espacio entre los iconos
                 ),
@@ -48,25 +48,38 @@ def header() -> rx.Component:
             ),
             align_items="center",
         ),
-        rx.flex(
-            info_text(f"{años_estudios()}+", "años sumando conocimientos informáticos"),
-            rx.spacer(),
-            info_text(f"{años_estudios()}+", "años sumando conocimientos informáticos"),
-            rx.spacer(),
-            info_text(f"{años_estudios()}+", "años sumando conocimientos informáticos"),
-            width="100%",
-            padding_x=Size.MEDIUM.value,  # <--- Añade espacio a los lados
-            # Opcional: añade un gap mínimo por si el spacer se queda sin espacio
-            spacing="4",
-        ),
-        rx.text(
-            """
-        Técnico Universitario en Desarrollo de Software y estudiante avanzado de Ingeniería Informática, 
-        con experiencia como Data Engineer Trainee, donde adquirí bases prácticas en ingesta, transformación 
-        y análisis de datos dentro de un entorno profesional.
-        """,
-            text_align="center",
-            color=TextColor.BODY.value,
+        rx.cond(
+            details,
+            rx.vstack(
+                rx.flex(
+                    info_text(
+                        f"{años_estudios()}+", "años sumando conocimientos informáticos"
+                    ),
+                    rx.spacer(),
+                    info_text(
+                        f"{años_estudios()}+", "años sumando conocimientos informáticos"
+                    ),
+                    rx.spacer(),
+                    info_text(
+                        f"{años_estudios()}+", "años sumando conocimientos informáticos"
+                    ),
+                    width="100%",
+                    padding_x=Size.MEDIUM.value,  # <--- Añade espacio a los lados
+                    # Opcional: añade un gap mínimo por si el spacer se queda sin espacio
+                    spacing="4",
+                ),
+                rx.text(
+                    """
+                    Técnico Universitario en Desarrollo de Software y estudiante avanzado de Ingeniería Informática, 
+                    con experiencia como Data Engineer Trainee, donde adquirí bases prácticas en ingesta, transformación 
+                    y análisis de datos dentro de un entorno profesional.
+                    """,
+                    text_align="center",
+                    color=TextColor.BODY.value,
+                ),
+                spacing="6",
+                width="100%",
+            ),
         ),
         align_items="center",
         spacing="6",

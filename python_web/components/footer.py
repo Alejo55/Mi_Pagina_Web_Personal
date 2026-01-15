@@ -9,7 +9,7 @@ import python_web.constants as const
 def footer() -> rx.Component:
     return rx.vstack(
         rx.image(
-            src="logo.png",
+            src="/logo.png",
             height=Size.VERY_BIG.value,
             width="auto",
             padding="2px",
@@ -21,6 +21,7 @@ def footer() -> rx.Component:
             href=const.LINKEDIN_URL,
             is_external=True,
             font_size=Size.MEDIUM.value,
+            margin_top=Size.MEDIUM.value,
         ),
         rx.text("All rights reserved.", font_size=Size.MEDIUM.value),
         spacing="0",
