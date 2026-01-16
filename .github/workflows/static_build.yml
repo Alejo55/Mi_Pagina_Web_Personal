@@ -1,0 +1,36 @@
+name: Static Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    if: github.repository == 'Alejo55/Mi_Pagina_Web_Personal'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run build script
+        run: |
+          chmod +x ./build.sh
+          ./build.sh
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update static build
+          commit_user_name: Alejo55 [GitHub Actions]
+          commit_user_email: alejoaa2000@gmail.com
+          commit_author: Alejo Agasi <alejoaa2000@gmail.com>
