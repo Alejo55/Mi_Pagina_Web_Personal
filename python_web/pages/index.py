@@ -6,6 +6,7 @@ from python_web.views.header import header
 from python_web.views.index_links import index_links
 from python_web.components.footer import footer
 from python_web.styles.styles import Size as Size
+from python_web.routes import Route
 
 
 # Pagina inicial = index
@@ -14,6 +15,7 @@ from python_web.styles.styles import Size as Size
 # En concreto, desde la versión 0.4.0, Reflex utiliza Radix (en vez de Chakra)
 # El componente puede tener propiedades propias como tambien de CSS (importante usar snake_case)
 @rx.page(
+    route=Route.INDEX.value,
     title=utils.index_title,
     description=utils.index_description,
     image=utils.preview,

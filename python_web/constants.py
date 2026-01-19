@@ -2,6 +2,10 @@
 LINKEDIN_URL = "https://www.linkedin.com/in/alejo-agasi/"
 GITHUB_URL = "https://github.com/Alejo55"
 INSTAGRAM_URL = "https://www.instagram.com/alejoagasi_/"
+TWITCH_URL = "https://www.twitch.tv/alejo_2112"
+
+# Usuario Twitch
+USER_TWITCH = "alejo_2112"
 
 # Contacto
 EMAIL = "alejoaa2000@gmail.com"
@@ -12,3 +16,6 @@ AZURE_CLOUD_CERT = "https://learn.microsoft.com/es-mx/users/alejoagasi-2811/cred
 SANTANDER_PYTHON_CERT = "/certificates/Python_Santander.pdf"
 SANTANDER_PYTHON_CURSOR_CERT = "/certificates/PythonAndCursor_Santander.pdf"
 POSTMAN_CERT = "https://badges.parchment.com/public/assertions/argMaq5ZR4C31D3ydcyHfw"
+
+# Repo
+REPO_URL = "https://github.com/Alejo55/Mi_Pagina_Web_Personal"

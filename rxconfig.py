@@ -7,7 +7,7 @@ import os
 # Para desarrollo local, el valor por defecto es http://localhost:8000
 api_url = os.getenv(
     "API_URL",
-    "https://alejoagasiweb.up.railway.app"  # URL de producción por defecto
+    "http://localhost:8000",  # URL por defecto
 )
 
 config = rx.Config(
@@ -25,6 +25,5 @@ config = rx.Config(
         rx.plugins.SitemapPlugin(),
         rx.plugins.TailwindV4Plugin(),  # Mejor para el diseño actual
     ],
-    show_built_with_reflex=
-    False,  # Para que se vea más profesional (sin el logo de Reflex)
+    show_built_with_reflex=False,  # Para que se vea más profesional (sin el logo de Reflex)
 )

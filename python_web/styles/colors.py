@@ -13,6 +13,8 @@ class Color(Enum):
 
     CONTENT = "#1F2937"
 
+    PURPLE = "#9146ff"
+
 
 class TextColor(Enum):
     # Blanco puro o muy brillante

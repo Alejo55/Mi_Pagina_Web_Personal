@@ -1,28 +1,51 @@
 import reflex as rx
+import python_web.constants as const
+import datetime
 from python_web.styles.colors import TextColor as TextColor
 from python_web.styles.colors import Color as Color
 from python_web.components.link_icon import link_icon
 from python_web.components.info_text import info_text
-import python_web.constants as const
-import datetime
-
 from python_web.styles.styles import Size
+from python_web.state.PageState import PageState
 
 
 def header(details: bool = True) -> rx.Component:
     return rx.vstack(
         rx.hstack(
-            rx.avatar(
-                name="Alejo Agasi",
-                size="7",  # Subí a 7 para que el borde luzca mejor
-                src="/foto_mia.jpg",  # Recuerda el "/" inicial si está en assets
-                fallback="AA",  # Esto fuerza a que aparezcan las letras si no hay foto
-                # Esto asegura que sea un círculo perfecto
-                radius="full",
-                # Truco del borde:
-                # Usamos padding para que el fondo (bg) se vea como un borde
-                padding="2px",
-                bg=Color.SECONDARY.value,
+            rx.box(
+                rx.cond(
+                    PageState.is_live,
+                    rx.link(
+                        rx.image(
+                            src="/icons/twitch_icon.svg",
+                            height=Size.DEFAULT.value,
+                            width=Size.DEFAULT.value,
+                        ),
+                        href=const.TWITCH_URL,
+                        is_external=True,
+                        class_name="blink",
+                        border_radius="50%",
+                        padding=Size.SMALL.value,
+                        bg=Color.PURPLE.value,
+                        position="absolute",
+                        top=f"-{Size.DEFAULT.value}",
+                        right=f"-{Size.DEFAULT.value}",
+                        z_index="2",
+                    ),
+                ),
+                rx.avatar(
+                    name="Alejo Agasi",
+                    size="7",  # Subí a 7 para que el borde luzca mejor
+                    src="/foto_mia.jpg",  # Recuerda el "/" inicial si está en assets
+                    fallback="AA",  # Esto fuerza a que aparezcan las letras si no hay foto
+                    # Esto asegura que sea un círculo perfecto
+                    radius="full",
+                    # Truco del borde:
+                    # Usamos padding para que el fondo (bg) se vea como un borde
+                    padding="2px",
+                    bg=Color.SECONDARY.value,
+                ),
+                position="relative",
             ),
             rx.vstack(
                 rx.vstack(
@@ -84,6 +107,9 @@ def header(details: bool = True) -> rx.Component:
         align_items="center",
         spacing="6",
         width="100%",  # <--- Asegura que ocupe todo el ancho disponible
+        # The on_mount event handler is called after the component is rendered on the page.
+        # It is similar to a page on_load event, although it does not necessarily fire when navigating between pages.
+        on_mount=PageState.check_live,
     )
 
 
