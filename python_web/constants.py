@@ -5,7 +5,7 @@ INSTAGRAM_URL = "https://www.instagram.com/alejoagasi_/"
 TWITCH_URL = "https://www.twitch.tv/alejo_2112"
 
 # Usuario Twitch
-USER_TWITCH = "alejo_2112"
+USER_TWITCH = "elchiringuitotv"
 
 # Contacto
 EMAIL = "alejoaa2000@gmail.com"
