@@ -4,12 +4,14 @@
 
 import reflex as rx
 import python_web.constants as const
-from python_web.api.api import live
+from python_web.api.api import live, cert
 
 
 class PageState(rx.State):
 
     is_live: bool = False
+    live_title: str = ""
+    cert_info: list = []
 
     # Antes @rx.var -> Para estados que se estan calculando en caliente, en tiempo de ejecucion,
     # y sin llamar al backend (no llama a servidor externo)
@@ -18,4 +20,10 @@ class PageState(rx.State):
     @rx.event
     async def check_live(self):  # Self para acceder al contexto.
         # await para esperar a que responda ya que es una operacion asincrona
-        self.is_live = await live(const.USER_TWITCH)
+        live_data = await live(const.USER_TWITCH)
+        self.is_live = live_data["live"]
+        self.live_title = live_data["title"]
+
+    @rx.event
+    async def cert_links(self):
+        self.cert_info = await cert()

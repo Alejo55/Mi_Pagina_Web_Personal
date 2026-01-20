@@ -12,6 +12,7 @@ STYLESHEETS = [
     "https://fonts.googleapis.com/css2?family=Audiowide&display=swap",
     "https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@400&display=swap",
     "https://fonts.googleapis.com/css2?family=Zalando+Sans:wght@400&display=swap",
+    "/css/styles.css",
 ]
 
 

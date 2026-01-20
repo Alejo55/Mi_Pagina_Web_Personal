@@ -7,6 +7,7 @@ from python_web.components.link_icon import link_icon
 from python_web.components.info_text import info_text
 from python_web.styles.styles import Size
 from python_web.state.PageState import PageState
+from python_web.components.link_button import link_button
 
 
 def header(details: bool = True) -> rx.Component:
@@ -28,8 +29,8 @@ def header(details: bool = True) -> rx.Component:
                         padding=Size.SMALL.value,
                         bg=Color.PURPLE.value,
                         position="absolute",
-                        top=f"-{Size.DEFAULT.value}",
-                        right=f"-{Size.DEFAULT.value}",
+                        top=f"-{Size.SMALL.value}",
+                        right=f"-{Size.SMALL.value}",
                         z_index="2",
                     ),
                 ),
@@ -90,6 +91,16 @@ def header(details: bool = True) -> rx.Component:
                     padding_x=Size.MEDIUM.value,  # <--- Añade espacio a los lados
                     # Opcional: añade un gap mínimo por si el spacer se queda sin espacio
                     spacing="4",
+                ),
+                rx.cond(
+                    PageState.is_live,
+                    link_button(
+                        "En directo",
+                        PageState.live_title,
+                        "/icons/twitch_icon.svg",
+                        const.TWITCH_URL,
+                        highlight_color=Color.PURPLE.value,
+                    ),
                 ),
                 rx.text(
                     """

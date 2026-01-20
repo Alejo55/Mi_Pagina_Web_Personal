@@ -4,7 +4,7 @@ from python_web.styles.styles import Size as Size
 
 
 def link_button(
-    title: str, body: str, image: str, url: str, is_external: bool = True
+    title: str, body: str, image: str, url: str, is_external=True, highlight_color=None
 ) -> rx.Component:
     return rx.link(
         rx.button(
@@ -27,6 +27,9 @@ def link_button(
                 width="100%",
                 align="center",
             ),
+            border_style="solid",
+            border_color=highlight_color,
+            border_width="2px" if highlight_color != None else None,
         ),
         href=url,
         is_external=is_external,
