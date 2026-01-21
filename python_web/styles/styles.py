@@ -18,14 +18,28 @@ STYLESHEETS = [
 
 # Tamaños por defecto (encapsulados gracias a Enum)
 class Size(Enum):
-    # 1em = Tamaño de la fuente actual de la aplicación. Tamaño relativo.
+    # 1em = Tamaño de la fuente actual de la aplicación (16 px). Tamaño relativo.
+    # Tamaño en em = Píxeles deseados / Tamaño de fuente del padre (o base)
     # Antes usaba px, pero es propenso a romperse en pantallas pequeñas o grandes
+    VERY_SMALL = "0.125em"
     SMALL = "0.5em"
     MEDIUM = "0.8em"
     DEFAULT = "1em"
     LARGE = "1.5em"
     BIG = "2em"
     VERY_BIG = "4em"
+
+
+class Spacing(Enum):
+    ZERO = "0"
+    VERY_SMALL = "1"
+    MEDIUM_SMALL = "2"
+    SMALL = "3"
+    DEFAULT = "4"  # 16px / 1em
+    LARGE = "5"
+    BIG = "6"
+    MEDIUM_BIG = "7"
+    VERY_BIG = "9"
 
 
 # Estilos que afectan a toda la aplicación

@@ -2,8 +2,9 @@ import reflex as rx
 import python_web.constants as const
 from python_web.components.link_button import link_button
 from python_web.components.title import title
-from python_web.routes import Route as Route
+from python_web.routes import Route
 from python_web.styles.colors import Color
+from python_web.styles.styles import Spacing
 
 
 def index_links() -> rx.Component:
@@ -46,5 +47,5 @@ def index_links() -> rx.Component:
             f"mailto:{const.EMAIL}",
         ),
         width="100%",
-        spacing="3",
+        spacing=Spacing.SMALL.value,
     )

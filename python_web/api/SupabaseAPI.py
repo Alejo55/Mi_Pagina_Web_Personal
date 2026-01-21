@@ -15,18 +15,13 @@ class SupabaseAPI:
         if self.SUPABASE_URL != None and self.SUPABASE_KEY != None:
             self.supabase: Client = create_client(self.SUPABASE_URL, self.SUPABASE_KEY)
 
-    # def __init__(self) -> None:
-    #     self.supabase: Client = None
-
-    # def create_client(self):
-    #     if self.supabase is None:
-    #         self.supabase = create_client(self.SUPABASE_URL, self.SUPABASE_KEY)
-
     def cert(self) -> list[Certificate]:
-        # if self.supabase is None:
-        #     self.create_client()
-
-        response = self.supabase.table("certificates").select("*").execute()
+        response = (
+            self.supabase.table("certificates")
+            .select("*")
+            .order(column="init_date", desc=True)
+            .execute()
+        )
 
         certificates_data = []
 

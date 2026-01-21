@@ -2,6 +2,7 @@ import reflex as rx
 import python_web.constants as const
 from python_web.components.link_button import link_button
 from python_web.components.title import title
+from python_web.styles.styles import Spacing
 from python_web.styles.colors import Color
 from python_web.state.PageState import PageState
 
@@ -23,7 +24,7 @@ def certificates_links() -> rx.Component:
                     ),
                 ),
                 width="100%",
-                spacing="3",
+                spacing=Spacing.SMALL.value,
             ),
         ),
         width="100%",

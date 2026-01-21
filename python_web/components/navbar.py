@@ -1,9 +1,9 @@
 import reflex as rx
 import python_web.styles.styles as styles
 import python_web.constants as const
-from python_web.styles.styles import Size as Size
-from python_web.styles.colors import Color as Color
-from python_web.routes import Route as Route
+from python_web.styles.styles import Size
+from python_web.styles.colors import Color
+from python_web.routes import Route
 from python_web.components.ant_components import float_button
 
 

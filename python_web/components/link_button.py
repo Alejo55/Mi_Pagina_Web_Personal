@@ -1,6 +1,6 @@
 import reflex as rx
 import python_web.styles.styles as styles
-from python_web.styles.styles import Size as Size
+from python_web.styles.styles import Size, Spacing
 
 
 def link_button(
@@ -20,7 +20,7 @@ def link_button(
                     rx.text(title, style=styles.button_title_style),
                     rx.text(body, style=styles.button_body_style),
                     align_items="start",  # Texto alineado a la izquierda entre sí
-                    spacing="0",  # Elimina espacio extra entre líneas de texto
+                    spacing=Spacing.ZERO.value,  # Elimina espacio extra entre líneas de texto
                     padding_y=Size.SMALL.value,
                     padding_right=Size.SMALL.value,
                 ),
@@ -29,7 +29,7 @@ def link_button(
             ),
             border_style="solid",
             border_color=highlight_color,
-            border_width="2px" if highlight_color != None else None,
+            border_width=Size.VERY_SMALL.value if highlight_color != None else None,
         ),
         href=url,
         is_external=is_external,

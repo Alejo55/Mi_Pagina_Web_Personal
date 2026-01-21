@@ -2,7 +2,7 @@
 # Es otra libreria de componentes de React como Radix o Chakra
 
 import reflex as rx
-from python_web.styles.colors import Color as Color
+from python_web.styles.colors import Color
 
 
 # Boton flotante que aparecera siempre abajo a la derecha, por lo que da igual donde lo coloquemos

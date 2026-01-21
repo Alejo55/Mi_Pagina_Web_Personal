@@ -1,11 +1,11 @@
 import reflex as rx
 import python_web.constants as const
 import datetime
-from python_web.styles.colors import TextColor as TextColor
-from python_web.styles.colors import Color as Color
+from python_web.styles.colors import TextColor
+from python_web.styles.colors import Color
 from python_web.components.link_icon import link_icon
 from python_web.components.info_text import info_text
-from python_web.styles.styles import Size
+from python_web.styles.styles import Size, Spacing
 from python_web.state.PageState import PageState
 from python_web.components.link_button import link_button
 
@@ -36,23 +36,23 @@ def header(details: bool = True) -> rx.Component:
                 ),
                 rx.avatar(
                     name="Alejo Agasi",
-                    size="7",  # Subí a 7 para que el borde luzca mejor
+                    size=Spacing.MEDIUM_BIG.value,  # Subí a 7 para que el borde luzca mejor
                     src="/foto_mia.jpg",  # Recuerda el "/" inicial si está en assets
                     fallback="AA",  # Esto fuerza a que aparezcan las letras si no hay foto
                     # Esto asegura que sea un círculo perfecto
                     radius="full",
                     # Truco del borde:
                     # Usamos padding para que el fondo (bg) se vea como un borde
-                    padding="2px",
+                    padding=Size.VERY_SMALL.value,
                     bg=Color.SECONDARY.value,
                 ),
                 position="relative",
             ),
             rx.vstack(
                 rx.vstack(
-                    rx.heading("Alejo Agasi", size="5"),
+                    rx.heading("Alejo Agasi", size=Spacing.LARGE.value),
                     rx.text("@yo", color=Color.SECONDARY.value),
-                    spacing="0",
+                    spacing=Spacing.ZERO.value,
                     align_items="start",
                 ),
                 rx.hstack(
@@ -65,9 +65,9 @@ def header(details: bool = True) -> rx.Component:
                     link_icon(
                         "/icons/linkedin_icon.svg", const.LINKEDIN_URL, "LinkedIn"
                     ),
-                    spacing="5",  # Espacio entre los iconos
+                    spacing=Spacing.LARGE.value,  # Espacio entre los iconos
                 ),
-                spacing="2",  # Este es el espacio que habrá entre el bloque de texto y los links
+                spacing=Spacing.MEDIUM_SMALL.value,  # Este es el espacio que habrá entre el bloque de texto y los links
                 align_items="start",
             ),
             align_items="center",
@@ -90,7 +90,7 @@ def header(details: bool = True) -> rx.Component:
                     width="100%",
                     padding_x=Size.MEDIUM.value,  # <--- Añade espacio a los lados
                     # Opcional: añade un gap mínimo por si el spacer se queda sin espacio
-                    spacing="4",
+                    spacing=Spacing.DEFAULT.value,
                 ),
                 rx.cond(
                     PageState.live_status.live,
@@ -111,12 +111,12 @@ def header(details: bool = True) -> rx.Component:
                     text_align="center",
                     color=TextColor.BODY.value,
                 ),
-                spacing="6",
+                spacing=Spacing.BIG.value,
                 width="100%",
             ),
         ),
         align_items="center",
-        spacing="6",
+        spacing=Spacing.BIG.value,
         width="100%",  # <--- Asegura que ocupe todo el ancho disponible
         # The on_mount event handler is called after the component is rendered on the page.
         # It is similar to a page on_load event, although it does not necessarily fire when navigating between pages.

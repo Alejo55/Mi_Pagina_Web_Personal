@@ -5,8 +5,7 @@ from python_web.components.navbar import navbar
 from python_web.views.header import header
 from python_web.views.index_links import index_links
 from python_web.components.footer import footer
-from python_web.styles.styles import Size as Size
-from python_web.routes import Route
+from python_web.styles.styles import Size, Spacing
 
 
 # Pagina inicial = index
@@ -35,9 +34,8 @@ def index() -> rx.Component:
                 index_links(),
                 max_width=styles.MAX_WIDTH,
                 width="100%",
-                spacing="5",
-                padding_x=Size.DEFAULT.value,
-                padding_y=Size.BIG.value,
+                spacing=Spacing.LARGE.value,
+                padding=Size.DEFAULT.value,
                 margin_y=Size.BIG.value,
                 align="center",  # <--- CRUCIAL: Centra el header y los links dentro de la columna
             ),
