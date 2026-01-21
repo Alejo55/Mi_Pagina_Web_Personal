@@ -2,6 +2,7 @@ import os
 import dotenv
 import requests
 import time
+from python_web.model.Live import Live
 
 
 # Ver documentacion en https://dev.twitch.tv/docs/api/
@@ -37,7 +38,7 @@ class TwitchAPI:
     def token_valid(self) -> bool:
         return time.time() < self.token_exp
 
-    def live(self, user: str) -> dict:
+    def live(self, user: str) -> Live:
         if not self.token_valid():
             self.generate_token()
 
@@ -52,6 +53,6 @@ class TwitchAPI:
         # Debe devolver 200 y que tenga data (puede devolver 200 pero no estar en directo)
         if response.status_code == 200 and response.json()["data"]:
             data = response.json()["data"]
-            return {"live": True, "title": data[0]["title"]}
+            return Live(live=True, title=data[0]["title"])
 
-        return {"live": False, "title": ""}
+        return Live(live=False, title="")

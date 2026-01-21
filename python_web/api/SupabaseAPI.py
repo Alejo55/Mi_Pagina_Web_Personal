@@ -1,6 +1,7 @@
 import os
 import dotenv
 from supabase import create_client, Client
+from python_web.model.Certificate import Certificate
 
 
 class SupabaseAPI:
@@ -11,15 +12,19 @@ class SupabaseAPI:
     SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
 
     def __init__(self) -> None:
-        self.supabase: Client = None
+        if self.SUPABASE_URL != None and self.SUPABASE_KEY != None:
+            self.supabase: Client = create_client(self.SUPABASE_URL, self.SUPABASE_KEY)
 
-    def create_client(self):
-        if self.supabase is None:
-            self.supabase = create_client(self.SUPABASE_URL, self.SUPABASE_KEY)
+    # def __init__(self) -> None:
+    #     self.supabase: Client = None
 
-    def cert(self) -> list:
-        if self.supabase is None:
-            self.create_client()
+    # def create_client(self):
+    #     if self.supabase is None:
+    #         self.supabase = create_client(self.SUPABASE_URL, self.SUPABASE_KEY)
+
+    def cert(self) -> list[Certificate]:
+        # if self.supabase is None:
+        #     self.create_client()
 
         response = self.supabase.table("certificates").select("*").execute()
 
@@ -28,6 +33,13 @@ class SupabaseAPI:
         # Si los datos que obtengo son mayores que 0, entonces existen y puedo trabajar con ellos
         if len(response.data) > 0:
             for cert_item in response.data:
-                certificates_data.append(cert_item)
+                certificates_data.append(
+                    Certificate(
+                        title=cert_item["title"],
+                        body=cert_item["body"],
+                        url_icon=cert_item["url_icon"],
+                        url_pdf=cert_item["url_pdf"],
+                    )
+                )
 
         return certificates_data

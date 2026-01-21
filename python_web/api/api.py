@@ -1,5 +1,7 @@
 import python_web.constants as const
 from fastapi import FastAPI
+from python_web.model.Certificate import Certificate
+from python_web.model.Live import Live
 from .TwitchAPI import TwitchAPI
 from .SupabaseAPI import SupabaseAPI
 
@@ -17,10 +19,10 @@ async def repo() -> str:
 
 
 @fastapi_app.get("/live/{user}")
-async def live(user: str) -> dict:
+async def live(user: str) -> Live:
     return TWITCH_API.live(user)
 
 
 @fastapi_app.get("/cert")
-async def cert() -> list:
+async def cert() -> list[Certificate]:
     return SUPABASE_API.cert()

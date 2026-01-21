@@ -15,7 +15,7 @@ def header(details: bool = True) -> rx.Component:
         rx.hstack(
             rx.box(
                 rx.cond(
-                    PageState.is_live,
+                    PageState.live_status.live,
                     rx.link(
                         rx.image(
                             src="/icons/twitch_icon.svg",
@@ -93,10 +93,10 @@ def header(details: bool = True) -> rx.Component:
                     spacing="4",
                 ),
                 rx.cond(
-                    PageState.is_live,
+                    PageState.live_status.live,
                     link_button(
                         "En directo",
-                        PageState.live_title,
+                        PageState.live_status.title,
                         "/icons/twitch_icon.svg",
                         const.TWITCH_URL,
                         highlight_color=Color.PURPLE.value,
