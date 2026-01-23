@@ -13,6 +13,7 @@ class FloatButton(rx.Component):
 
     # IMPORTANTE ESPECIFICAR EL TIPO DE LOS SIGUIENTES PARA QUE FUNCIONE
     icon: rx.Var[rx.Component]  # Elemento variable, que lo podre pasar por argumento
+    tooltip: rx.Var[str]
     href: rx.Var[str]  # Elemento variable, que lo podre pasar por argumento
     target: rx.Var[str] = "_blank"  # Nueva pestaña
     badge: rx.Var[dict] = {

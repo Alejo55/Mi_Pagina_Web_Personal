@@ -7,11 +7,15 @@ from .fonts import Font as Font
 # Constantes de estilos
 MAX_WIDTH = "560px"
 
+FADEIN_ANIMATION = "animate__animated animate__fadeIn"
+ZOOMINLEFT_ANIMATION = "animate__animated animate__zoomInLeft"
+
 # Fuentes
 STYLESHEETS = [
     "https://fonts.googleapis.com/css2?family=Audiowide&display=swap",
-    "https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@400&display=swap",
+    "https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@500&display=swap",
     "https://fonts.googleapis.com/css2?family=Zalando+Sans:wght@400&display=swap",
+    "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
     "/css/styles.css",
 ]
 
@@ -26,6 +30,7 @@ class Size(Enum):
     MEDIUM = "0.8em"
     DEFAULT = "1em"
     LARGE = "1.5em"
+    EXTRA_LARGE = "1.75em"
     BIG = "2em"
     VERY_BIG = "4em"
 
@@ -48,6 +53,9 @@ class Spacing(Enum):
 BASE_STYLE = {
     "font_family": Font.DEFAULT.value,
     "background_color": Color.BACKGROUND.value,
+    "background_image": "url('/bg_dark_pattern.png')",
+    "background_repeat": "repeat",
+    "background_attachment": "fixed",
     "overflow_x": "hidden",  # Permite que si no hay espacio, no empuje el contenido fuera
     rx.text: {
         "white_space": "normal",
@@ -62,16 +70,31 @@ BASE_STYLE = {
         "width": "100%",
         "height": "100%",
         "padding": Size.SMALL.value,
-        "border_radius": Size.DEFAULT.value,
         "color": TextColor.HEADER.value,
-        "background_color": Color.CONTENT.value,
+        "background_color": Color.CONTENT.value,  # Fondo del botón
+        "border": f"2px solid {TextColor.HEADER.value}",  # Borde del botón
+        "box_shadow": f"4px 4px 0px 0px {TextColor.HEADER.value}",  # La "sombra" sólida
+        "transition": "all 0.1s ease-in-out",
         "white_space": "normal",  # Si el texto es más largo que el ancho del botón, se dividirá en dos o más líneas automáticamente.
         "text_align": "start",
         "_hover": {
+            "box_shadow": "none",  # Desaparece la sombra
+            "transform": "translate(4px, 4px)",  # Se mueve exactamente lo que medía la sombra
             "background_color": Color.SECONDARY.value,
         },
     },
     rx.link: {"text_decoration": "none", "_hover": {}},
+}
+
+
+image_style = {
+    "border": f"2px solid {Color.PRIMARY.value}",
+    "border_radius": Size.SMALL.value,
+    "box_shadow": f"3px 3px 0px 0px {Color.PRIMARY.value}",
+    "_hover": {
+        "box_shadow": f"6px 6px 0px 0px {Color.PRIMARY.value}",
+        "transform": "translate(-3px, -3px)",
+    },
 }
 
 

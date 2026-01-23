@@ -20,7 +20,7 @@ def certificates_links() -> rx.Component:
                         item["body"],
                         item["url_icon"],
                         item["url_pdf"],
-                        highlight_color=Color.SECONDARY.value,
+                        highlight_color=Color.GOLD.value,
                     ),
                 ),
                 width="100%",

@@ -16,14 +16,38 @@ def footer() -> rx.Component:
             bg=Color.SECONDARY.value,
             alt="Logotipo de Alejo Agasi, Ingeniero de Software",
         ),
-        rx.link(
-            f"Alejo Agasi © {datetime.datetime.now().year}",
-            href=const.LINKEDIN_URL,
-            is_external=True,
+        rx.text(
+            f"© 2019-{datetime.datetime.now().year} Alejo Agasi",
             font_size=Size.MEDIUM.value,
             margin_top=Size.MEDIUM.value,
         ),
-        rx.text("All rights reserved.", font_size=Size.MEDIUM.value),
+        rx.link(
+            rx.hstack(
+                rx.image(
+                    src="/icons/github_icon.svg",
+                    height=Size.LARGE.value,
+                    width=Size.LARGE.value,
+                    alt="Logo GitHub",
+                ),
+                rx.vstack(
+                    rx.text(
+                        "Ver código fuente del proyecto",
+                        font_size=Size.MEDIUM.value,
+                    ),
+                    rx.text(
+                        "Construido con Python y Reflex", font_size=Size.MEDIUM.value
+                    ),
+                    spacing=Spacing.VERY_SMALL.value,
+                    align_items="start",
+                ),
+                align_items="center",
+                spacing=Spacing.SMALL.value,
+            ),
+            href=const.REPO_URL,
+            is_external=True,
+            color=TextColor.FOOTER.value,
+            padding_top=Size.DEFAULT.value,
+        ),
         spacing=Spacing.ZERO.value,
         align="center",  # <--- Centra los elementos del footer
         width="100%",

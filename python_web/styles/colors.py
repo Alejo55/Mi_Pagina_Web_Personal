@@ -15,6 +15,8 @@ class Color(Enum):
 
     PURPLE = "#9146ff"
 
+    GOLD = "#D3A745"
+
 
 class TextColor(Enum):
     # Blanco puro o muy brillante

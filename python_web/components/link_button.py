@@ -4,7 +4,13 @@ from python_web.styles.styles import Size, Spacing
 
 
 def link_button(
-    title: str, body: str, image: str, url: str, is_external=True, highlight_color=None
+    title: str,
+    body: str,
+    image: str,
+    url: str,
+    is_external=True,
+    highlight_color=None,
+    animation=None,
 ) -> rx.Component:
     return rx.link(
         rx.button(
@@ -29,9 +35,9 @@ def link_button(
             ),
             border_style="solid",
             border_color=highlight_color,
-            border_width=Size.VERY_SMALL.value if highlight_color != None else None,
         ),
         href=url,
         is_external=is_external,
+        class_name=styles.FADEIN_ANIMATION if animation is None else animation,
         width="100%",
     )

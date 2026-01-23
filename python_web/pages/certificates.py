@@ -1,4 +1,5 @@
 import reflex as rx
+from python_web.components.ant_components import float_button
 import python_web.styles.styles as styles
 import python_web.utils as utils
 from python_web.components.navbar import navbar
@@ -33,4 +34,13 @@ def certificates() -> rx.Component:
             ),
         ),
         footer(),
+        float_button(
+            icon=rx.image(
+                src="/icons/cv_icon.svg",
+                width=Size.BIG.value,  # ¡OBLIGATORIO!
+                height=Size.BIG.value,  # ¡OBLIGATORIO!
+            ),
+            tooltip="Ver mi CV",
+            href="/cv/AlejoAgasi_CV.pdf",
+        ),
     )
