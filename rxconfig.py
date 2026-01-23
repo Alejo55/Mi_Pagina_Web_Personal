@@ -19,7 +19,7 @@ config = rx.Config(
     # Lista de dominios que pueden interactuar con tu backend
     cors_allowed_origins=[
         "http://localhost:3000",
-        "https://mi-pagina-web-personal.vercel.app",
+        "https://alejo-agasi-web.vercel.app",
     ],
     plugins=[
         rx.plugins.SitemapPlugin(),

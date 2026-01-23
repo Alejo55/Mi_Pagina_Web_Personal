@@ -6,7 +6,7 @@ def lang() -> rx.Component:  # Indica el idioma del documento
     return rx.script("document.documentElement.lang='es'")
 
 
-preview = "/https://mi-pagina-web-personal.vercel.app/a-solid-full.png"  # Lo uso para Imagen de preview / metadata
+preview = "https://alejo-agasi-web.vercel.app/a-solid-full.png"  # Lo uso para Imagen de preview / metadata
 
 __meta = [  # Privado
     {"name": "og:type", "content": "website"},
