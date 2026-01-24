@@ -1,2 +1,0 @@
-Una vista es una coleccion de componentes.
-Incluso una vista puede agrupar mas vistas.
